@@ -1,5 +1,4 @@
 import socket
-import sys
 
 HOST = 'localhost'
 PORT = 19876
