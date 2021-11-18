@@ -84,4 +84,3 @@ while True:
         break
     else:
         print("\n Seleccione una opción válida")
-

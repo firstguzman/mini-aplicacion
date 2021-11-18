@@ -60,4 +60,3 @@ while True:
             today = datetime.today()
             saveLog('log.txt', data_transformed, today.strftime("%d/%m/%Y %H:%M:%S"), address[0], 'UDP')
             break
-
