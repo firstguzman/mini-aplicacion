@@ -16,7 +16,8 @@ def conversation_tcp (sock):
         print('received {!r}'.format(data))
 
         if data == b'OK':
-            message = 'Hola soy '+ name + ', gracias por tenerme en la lista'
+            response = input('Escriba su mensaje: ')
+            message = 'f '+ response
             sock.sendall(message.encode('utf-8'))
             print('response sent')
 
@@ -37,7 +38,8 @@ def conversation_udp (sock, server_address):
         print('received {!r}'.format(data))
 
         if data[0] == b'OK':
-            message = 'Hola soy '+ name + ', gracias por tenerme en la lista'
+            response = input('Escriba su mensaje: ')
+            message = 'f '+ response
             sock.sendto(message.encode('utf-8'), server_address)
             print('response sent')
 
