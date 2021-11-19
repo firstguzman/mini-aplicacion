@@ -5,13 +5,13 @@ def findByname (nombre):
     with open('users.txt', encoding='utf-8') as file:
         users = file.readlines()
     for user in users:
-        if nombre in user:
+        if nombre == user.replace('\n', ''):
             return True
     return False
 
 def saveLog (filename, message, date, ip, protocol):
     with open(filename, 'ab') as log_file:
-        log_message = message + '. Recibido a las: ' + date + ' y enviado por: ' + ip + ' a través del protocolo ' +  protocol + '\n'
+        log_message = message + ' Recibido a las: ' + date + ' y enviado por: ' + ip + ' a través del protocolo ' +  protocol + '\n'
         log_message_utf = log_message.encode()
         log_file.write(log_message_utf)
 
@@ -57,10 +57,11 @@ while True:
                     saveLog('log.txt', error_message, today.strftime("%d/%m/%Y %H:%M:%S"), client_address[0], 'TCP')
                     session = False
 
-            if 'Hola soy' in data_transformed:
+            if 'f ' in data_transformed:
+                message = data_transformed.replace('f ', '')
                 print('saving log...')
                 today = datetime.today()
-                saveLog('log.txt', data_transformed, today.strftime("%d/%m/%Y %H:%M:%S"), client_address[0], 'TCP')
+                saveLog('log.txt', message, today.strftime("%d/%m/%Y %H:%M:%S"), client_address[0], 'TCP')
                 break
     finally:
         # Clean up the connection
